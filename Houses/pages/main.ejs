@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MOOHNLONG</title>
+    <link href="styles.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <form action="/addDev" method="post" enctype="multipart/form-data">
+        <label for="name">Name:</label>
+        <input type="text" name="name" required>
+        <br>
+        <label for="description">Description:</label>
+        <input type="text" name="description" required>
+        <br>
+        <label for="image">Image:</label>
+        <input class="FileInput" type="file" name="image" accept="image/*" required>
+        <br>
+        <button type="submit">Add Registration</button>
+    </form>
+    
+    <% if (dev && dev.length > 0) { %>
+        <div class="Houses">
+        <div class="Card">
+            <% dev.forEach(function(person) { %>
+                <li>
+                    <h1 class="NameAndDescription">
+                    <%= person.name %>
+                    </h1>
+                    <img src="/uploads/<%= person.image %>" alt="<%= person.name %>"><br/>
+                    <h1 class="NameAndDescription">
+                     <%= person.description %>
+                    </h1>
+                </li>
+            <% }); %>
+        </div>
+        </div>
+    <% } else { %>
+        <p class="Title">No houses found.</p>
+    <% } %>
+</body>
+</html>
